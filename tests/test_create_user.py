@@ -32,7 +32,7 @@ class TestCreateUser:
     ])
     @allure.title("Код 403 при создании уникального пользователя без одного из обязательных полей")
     def test_create_user_without_requirement_field_fail(self, key, value):
-        with allure.step("Передаем в тест данные без заполнения одного из полей"):
+        with allure.step(f"Создаем пользователя с пустым полем {key}"):
             user = TestUserData.UserData.copy()
             user[key] = value
             response = UserMethods.create_user(body = user)
